@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1589828089 source:d:\documentos\tesis\programa\c_programa\main\tests\pruebas funciones_c\main.c
+	<stdio.h>
+	<stdlib.h>
+	"../../parse.h"
+
+1589822907 d:\documentos\tesis\programa\c_programa\main\parse.h
+	"datos.h"
+
+1589823731 source:d:\documentos\tesis\programa\c_programa\main\parse.c
+	"parse.h"
+	"string.h"
+	"stdio.h"
+	"stdlib.h"
+
+1589823528 d:\documentos\tesis\programa\c_programa\main\datos.h
+
+1589824337 source:d:\documentos\tesis\programa\c_programa\main\datos.c
+	"datos.h"
+	"string.h"
+	"stdlib.h"
+

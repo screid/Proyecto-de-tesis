@@ -1,0 +1,72 @@
+								
+param	periodo		:=	10			;		#	tiempo en segundos de cada tiempo t	
+param	maxt		:=	11			;		#	maximo de tiempos	
+param	cale_agua 	:=	4.1813		;		#	calor especifico	agua por cc
+param	cale_aire 	:=	1.012		;		#	calor especifico	aire por gramos
+param	masa_aire 	:=	420.2		;		#	masa del aire	en gramos
+param	den_agua	:=	997			;		#	densidad del agua	
+								
+param	rags		:=	0.5			;		#	resistencia termica de 	agua a superficie
+param	rsai		:=	0.01		;		#	resistencia termica de 	superficie al aire interno
+param	raie		:=	1.2			;		#	resistencia termica de 	aire interno al aire exterior revisar ,esta deveria ser mayor
+param	ragp		:=	0.00074767	;		#	resistencia termica de 	agua al punto
+param	rps   		:=	2.2400		;		#	resistencia termica de 	punto a la superficie
+param	tiag		:=	20			;		#	temperatura incial de	agua
+param	tiai		:=	20			;		#	temperatura incial de	aire interno
+param	tits		:=	25			;		#	temperatura incial de	superficie
+param	titp		:=	25			;		#	temperatura incial de	punto determinado
+param	vi   		:=	4.5			;		#	volumen inicial del agua	litros
+param	ceav		:=	0.24		;		#	calor especifico volumetrico del agua	
+param	qc   		:=	0.075		;		#	[KJ]calor generado por encender el calefactor durante un periodo	
+param	ce   		:=	109			;		#	costo en pesos (CLP) por KWh de electricidad	
+param	ca   		:=	0.83411		;		#	costo en pesos (CLP) por litro de agua consumida	
+param	eba   		:=	0.0003125	;		#	energia consumida por activar [KWh]	bomba de agua
+param	ebt    		:=	0.0003125	;		#	energia consumida por activar [KWh]	bomba calefaccion
+param	ect   		:=	0.00125		;		#	energia consumida por activar [KWh]	calefactor
+param	taimin		:=	20			;		#	limite inferior	temperatura
+param	taimax		:=	40			;		#	limite superior	temperatura
+param	tpmin		:=	20			;		#	limite inferior	temperatura
+param	tpmax		:=	35			;		#	limite superior	temperatura
+param	tamax		:=	50			;		#	temeratura maxima a la que calienta el agua el calefactor	
+param   tamin		:=	20			;		#	temperatura minima para el agua						
+param 	aba			:=	0.05		;		#	cantidad de agua en litros que se ocupa al utilizar la bomba de agua
+param	Hrel		:=	20			;		#	porcentaje de humedad retiva añadida por una cativacion de la irrigacion	
+param	Hmin		:=	35			;		#	porcentaje minimo de humedad en el suelo para la planta
+param	Hmax		:=	60			;		#	porcentaje maximo de humedad para la planta
+param	Hin			:=	45			;		#	humedad relativa inicial 					
+								
+								
+								
+								
+								
+								
+								
+param 	te	:=						
+0	17							
+1	17							
+3	17							
+2	17							
+4	17							
+5	17							
+6	17							
+7	17							
+8	17							
+9	17							
+10	17							
+11	17							
+;								
+								
+var 	VA	:=						
+0	4							
+1	4							
+2	4							
+3	4							
+4	4							
+5	4							
+6	4							
+7	4							
+8	4							
+9	4							
+10	4							
+11	4							
+;								

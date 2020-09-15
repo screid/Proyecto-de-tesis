@@ -1,0 +1,228 @@
+menu "INVERNADERO CONFIG"
+    menu "wifi"
+    config ESP_WIFI_SSID
+        string "WiFi SSID"
+        default "myssid"
+        help
+            SSID (network name) for the example to connect to.
+
+    config ESP_WIFI_PASSWORD
+        string "WiFi Password"
+        default "mypassword"
+        help
+            WiFi password (WPA or WPA2) for the example to use.
+
+    config ESP_MAXIMUM_RETRY
+        int "Intentos de reconectar a wifi"
+        default 5
+        help
+            Set the Maximum retry to avoid station reconnecting to the AP unlimited when the AP is really inexistent.
+    endmenu
+
+
+
+
+
+
+
+    menu "luz"
+
+    config i2c_luz_sda
+        int "gpio pin: sda"
+        default 15
+        help
+            el numero del gpio
+
+    config i2c_luz_scl
+        int "gpio pin: scl"
+        default 2
+        help
+            el numero de gpio
+			
+	config led_clk
+		int "gpio pin: clock"
+		default 19
+	config led_dat
+		int "gpio pin: data"
+		default 18
+    endmenu
+
+
+
+
+
+
+
+
+    menu "DHT11"
+        config pin_externo
+            int "pin dth11 al exterior"
+            default 15
+            help
+                el numero del gpio
+
+        config pin_aire_interno
+            int "pin dht11 al aire interno"
+            default 15
+            help
+                el numero del gpio
+
+        config pin_tierra_int
+            int "pin dht11 dentro de la tierra punto 1"
+            default 15
+            help
+                el numero del gpio
+
+        config pin_tierra_superficie
+            int "pin dht11 en la superficie de la tierra en el punto 1"
+            default 15
+            help
+                el numero del gpio
+
+        config pin_tierra_int2
+            int "pin dht11 dentro de la tierra en el punto 2"
+            default 15
+            help
+                el numero del gpio
+
+
+
+    endmenu
+
+
+
+
+
+
+    menu "Temperatura"
+        config pin_bomba_circulacion
+        int "pin para enceder la bomba de circulacion"
+        default 16
+
+        config pin_calefactor
+        int "pin para enceder el calefactor"
+        default 17
+
+
+    endmenu
+
+
+
+
+
+
+
+    menu "humedad del suelo"
+        config alerta_1
+            int "pin alerta del primer adc"
+            default 16
+
+        config alerta_2
+            int "pin alerta del segundo adc"
+            default 16
+
+        config direccion_adc_1234
+            hex "direccion i2c de los primeros sensore de humedad"
+            default 0x48
+            help
+                default ground
+
+        config direccion_adc_5678
+            hex "direccion i2c de los ultimos sensore de humedad y adcs"
+            default 0x49
+            help
+                default vcc
+
+        config pin_bomba_irrigacion
+            int "pin para encender la bomba de irrigacion"
+            default 18
+
+        config hum_periodo
+            int "tiempo en segundos entre controles"
+            default 10
+            help
+                minimo 2 segundos para medidas precisas
+
+
+    endmenu
+
+
+
+
+
+
+
+
+
+
+
+    menu "MQTT"
+
+        config ip_broker
+            string "ip de la forma 0.0.0.0"
+            default 192.168.0.20
+        config usuario_mqtt
+            string "nombre del usuario mqtt"
+            default "reyking"
+        config contrasena_mqtt
+            string "contrasena del usuario mqtt"
+            default "-Hans21021996"
+        config puero_mqtt
+            int "numero del puerto del broker"
+            default 1883
+		config topico_in
+			string "topico al cual recibir"
+			default "esp/in"
+		config topico_out
+			string "topico al cual enviar"
+			default "esp/out"
+        config nombre
+            string "nombre con el cual se presenta en el mqtt"
+            default "ESP32-INV"
+
+
+
+        menu "MQTT LWT"
+
+            config topico_ltw
+                string "topico para el LTW"
+                default ""
+            config mensaje_ltw
+                string "mensaje para el LTW"
+                default ""
+
+        endmenu
+
+        menu "logger"
+
+            config periodo_loggeo
+            int "tiempo en segundos entre envio de paquete de estado"
+            default 60
+
+        endmenu
+
+    endmenu
+
+
+
+
+
+    menu "Buffers"
+
+        config buf_in
+            int "tamano en bytes del bufer in"
+            default 600
+        config buf_out
+            int "tamano en bytes del bufer out"
+            default 600
+        config task_stack
+            int "tamano en bytes de los stacks de las tareas"
+            default 2048
+
+    endmenu
+
+
+
+
+
+endmenu

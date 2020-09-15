@@ -1,0 +1,26 @@
+reset;
+
+model inv2.mod;
+
+data inv.dat;
+option solver knitro;
+option knitro_option "alg=2";
+#option show_stats 1;
+
+
+
+
+solve;
+
+
+
+display te;
+display TAI;
+display TAG;
+display BT;
+display costo_feo;
+display VA;
+display BA;
+display HUM;
+#display (periodo/(4*cale_agua));
+#display (periodo/(masa_aire*cale_aire));
