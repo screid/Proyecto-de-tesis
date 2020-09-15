@@ -1,3 +1,0 @@
-version lista y funcionando
-agregado los tiempos separados en seguntos y modelados en periodos regulables
-diferenciaciacion de costos
