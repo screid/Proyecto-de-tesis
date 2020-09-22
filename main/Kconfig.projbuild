@@ -57,39 +57,32 @@ menu "INVERNADERO CONFIG"
     menu "DHT11"
         config pin_externo
             int "pin dth11 al exterior"
-            default 15
+            default 16
             help
                 el numero del gpio
 
-        config pin_aire_interno
-            int "pin dht11 al aire interno"
-            default 15
-            help
-                el numero del gpio
 
-        config pin_tierra_int
-            int "pin dht11 dentro de la tierra punto 1"
-            default 15
-            help
-                el numero del gpio
+        config pin1_interno
+            int "pin dht11 al aire interno UNO"
+            default 17
 
-        config pin_tierra_superficie
-            int "pin dht11 en la superficie de la tierra en el punto 1"
-            default 15
-            help
-                el numero del gpio
+		
+		
+		config pin2_interno
+            int "pin dht11 al aire interno DOS"
+            default 18
 
-        config pin_tierra_int2
-            int "pin dht11 dentro de la tierra en el punto 2"
-            default 15
-            help
-                el numero del gpio
+		
+		
+		config pin3_interno
+            int "pin dht11 al aire interno TRES"
+            default 5
 
 
 
     endmenu
 
-
+ 
 
 
 
@@ -97,11 +90,11 @@ menu "INVERNADERO CONFIG"
     menu "Temperatura"
         config pin_bomba_circulacion
         int "pin para enceder la bomba de circulacion"
-        default 16
+        default 13
 
         config pin_calefactor
         int "pin para enceder el calefactor"
-        default 17
+        default 12
 
 
     endmenu
@@ -113,13 +106,6 @@ menu "INVERNADERO CONFIG"
 
 
     menu "humedad del suelo"
-        config alerta_1
-            int "pin alerta del primer adc"
-            default 16
-
-        config alerta_2
-            int "pin alerta del segundo adc"
-            default 16
 
         config direccion_adc_1234
             hex "direccion i2c de los primeros sensore de humedad"
@@ -135,7 +121,7 @@ menu "INVERNADERO CONFIG"
 
         config pin_bomba_irrigacion
             int "pin para encender la bomba de irrigacion"
-            default 18
+            default 26
 
         config hum_periodo
             int "tiempo en segundos entre controles"

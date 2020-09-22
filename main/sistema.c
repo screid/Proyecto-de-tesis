@@ -24,7 +24,7 @@ EventGroupHandle_t sist;												//control del sistema
 
 const i2c_port_t i2c_luz=I2C_NUM_0;										//puerto del i2c
 ads1115_t adc1,adc2;													//adc's
-
+dht dht1,dht2,dht3,dhte;
 
 
 
@@ -254,19 +254,18 @@ void escucha(void* parametros) {
     
     vTaskDelete(0);
 }
-void sensardht11(void* parametros) {
+void sensardht11(void* parametros) {									//areglar integrar todos los dht11
     while((xEventGroupGetBits(sist)&fin_sist)!=0) {
 
-        vTaskDelay(1500/portTICK_PERIOD_MS);
+        vTaskDelay(1000/portTICK_PERIOD_MS);
         ESP_LOGD(TAG, "inicio lectura dht11");
-        struct dht11_reading rial;
-        struct dht11_reading lectura=DHT11_read();
-        while(lectura.status!=0)lectura=DHT11_read();
-        rial=lectura;
+        DHT11_read(&dhte);
+        while(dhte.status<0)DHT11_read(&dhte);
+        
         if(xSemaphoreTake( varsruct, ( TickType_t ) 10 ) == pdTRUE) {
             ESP_LOGD(TAG, "mutex tomado");
-            ((pares*)(variables_actuales->data)+temperatura_aire_ext)->valor=rial.temperature;
-            ((pares*)(variables_actuales->data)+humedad_aire_externa)->valor=rial.humidity;
+            ((pares*)(variables_actuales->data)+temperatura_aire_ext)->valor=dhte.temperature;
+            ((pares*)(variables_actuales->data)+humedad_aire_externa)->valor=dhte.humidity;
             xSemaphoreGive( varsruct );
         } else {
             ESP_LOGE(TAG, "problemas con el mutex");
@@ -285,7 +284,6 @@ void sist_init() {
     set_points=crear_men_f();
     varsruct=xSemaphoreCreateMutex();
     mut_setpoints=xSemaphoreCreateMutex();
-    DHT11_init(4);
     sist=xEventGroupCreate();
     xEventGroupSetBits(sist,fin_sist);
 
@@ -300,7 +298,11 @@ void sist_init() {
     //gpio_set_direction(CONFIG_pin_¿?, GPIO_MODE_OUTPUT);        				//salida disponible del grupo relays
 
 
-
+	//							inciar dht's
+	dhte=DHT11_init(CONFIG_pin_externo);
+	dht1=DHT11_init(CONFIG_pin1_interno);
+	dht2=DHT11_init(CONFIG_pin2_interno);
+	dht3=DHT11_init(CONFIG_pin3_interno);
 
 
 

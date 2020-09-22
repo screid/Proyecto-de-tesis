@@ -30,17 +30,29 @@
 enum dht11_status {
     DHT11_CRC_ERROR = -2,
     DHT11_TIMEOUT_ERROR,
-    DHT11_OK
+    DHT11_OK,
+	DHT11_muy_rapido
 };
 
-struct dht11_reading {
-    int status;
+
+typedef struct dht{
+	gpio_num_t pin;
+	char iniciado:1;
+	int status;
     int temperature;
     int humidity;
-};
+	int64_t last_read_time;
+}dht;
 
-void DHT11_init(gpio_num_t);
-
-struct dht11_reading DHT11_read();
+    /** \brief inicializacion del dht11
+     * \param numero del gpio a donde esta conectado el sensor
+     * \return estructura con el gpio configurado
+     */
+dht DHT11_init(gpio_num_t);
+    /** \brief reliza una lectura del sensor de temperatura
+     * \param estructua que contiene la info del sensor
+     * \return nada, guarda el resultado de la lectura dentro de la estructura
+     */
+void DHT11_read(dht *sensor);
 
 #endif

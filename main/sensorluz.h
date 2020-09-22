@@ -20,4 +20,8 @@ typedef struct{
     char direccion;
     char i2c_port;
 }lectura_luz;
+    /** \brief 
+     * \param estructura con informacion del sensor
+     * \return 
+     */
 void init_max(lectura_luz max);

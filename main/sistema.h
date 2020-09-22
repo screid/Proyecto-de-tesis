@@ -55,7 +55,11 @@ extern TaskHandle_t h_esc ;
 extern TaskHandle_t dht11 ;
 extern EventGroupHandle_t sist;
 
-
+    /** \brief 
+     * \param 
+	 * \param 
+     * \return 
+     */
 void control_luz(void* parametros);
 void control_humedad(void* parametros);
 void control_temperatura(void* parametros);
