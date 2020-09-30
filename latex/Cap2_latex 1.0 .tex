@@ -1,0 +1,229 @@
+\documentclass[letterpaper,conference]{IEEEtran}
+
+\usepackage[backend=biber,style=apa,citestyle=apa]{biblatex}
+\addbibresource{mendeleybib/tesis.bib}
+
+%Idioma y caracteres del idioma
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+
+
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}	
+\usepackage{stix}        %para el elerdendots para el rango
+
+
+\usepackage{datetime}	%fecha
+\usepackage{mfirstuc}	%mayuscula
+\usepackage{lipsum}
+
+
+
+\usepackage{listings} %codigos de programas
+
+%Opciones de márgenes
+\usepackage[left=3cm,right=3cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\newdateformat{monthyeardate}{%
+\monthname[\THEMONTH ] \THEYEAR}
+
+\usepackage{makeidx}
+\usepackage{subfiles}
+\usepackage{xcolor}	%colores
+
+
+\usepackage{lipsum}% http://ctan.org/pkg/lipsum
+
+
+\newcommand{\tarea}[1]{
+%{\huge\color{red}{#1}}
+}
+
+
+\newcommand{\tarealista}[1]{
+%{\Large\color{blue}{#1}}
+}
+\usepackage{url}
+%Paquete para gráficos, por ejemplo colocar imágenes
+\usepackage[pdftex]{graphicx}
+
+%Paquete para ecuacioens y/o otros elementos matemáticos
+\usepackage{amsmath,amsfonts,amsthm, bm}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+%Paquetes para alinear texto y/o ecuaciones
+\usepackage{array}
+
+% Distintas opciones de itemizdo
+\usepackage{enumitem}
+
+%Opciones de tabla
+\usepackage{multirow}
+
+
+
+\begin{document}
+
+\title{Título}
+
+\author{\IEEEauthorblockN{Samantha Reid Calderón}
+\IEEEauthorblockA{MSc., Docente\\ Departamento de Ciencias de la Ingeniería\\
+Universidad Andrés Bello \\
+Santiago, Chile\\
+Email:s.reid.cal@gmail.com}
+\and
+\IEEEauthorblockN{Hans Raddatz García}
+\IEEEauthorblockA{Estudiante de Ingeniería \\ Facultad de Ingeniería\\ Universidad Andrés Bello \\
+Santiago, Chile\\
+Email: hansraddatzreyking@gmail.com}}
+
+% Para colocar el título
+\maketitle
+
+%Para ponerle número de página al documento
+\thispagestyle{plain}
+\pagestyle{plain}
+
+\begin{abstract}
+Aquí va el abstract. Este elemento es lo que se hace al último en el documento.
+\\ 
+
+\end{abstract}
+\begin{IEEEkeywords}
+Palabras claves.
+\end{IEEEkeywords}
+
+\IEEEpeerreviewmaketitle
+
+\section{INTRODUCCIÓN}
+
+%Aquí se habla del contexto del trabajo y la importancia.
+% Posteriormente se coloca la propuesta del trabajo (objetivo general), junto con la metodología y caso de estudio (objetivos específicos). Por último, se describen las secciones del documento.
+
+
+Dentro de los grandes problemas que afronta la agricultura es la creciente demanda de alimentos respecto a la disminución de tierra arable \textcite{Specht2014}, además del inminente agotamiento de los recursos hídricos (recurso primordial para la agricultura) a nivel mundial  \parencite{Baldos2016}. Una de las formas en que se puede combatir estos problemas es mediante el uso de invernaderos que sean lo suficientemente flexibles como para ser colocados en cualquier superficie y condiciones, además de buscar ser más eficientes que los cultivos en tierra firme en el uso de recursos como el agua.
+
+Como es importante buscar que la implementación y uso de los invernaderos sea más eficientes que el cultivo tradicional, se utilizarán tecnologías como el SDI (irrigación por goteo en sub-suelo) el cual ha demostrado tener un aprovechamiento del agua de entre el 20\% y el 30\% más que los Sprinklers \parencite{Zaccaria2017}. Otro de los aspectos es la calefacción e iluminación, las cuales no son considerada para los cultivos tradicionales en tierra y sin techo, a diferencia de los invernaderos en donde la calefacción suele ser el punto más crítico por su alto consumo en temporadas y/o zonas frías \cite{Dong2018}, por ello la calefacción es uno de los puntos con mayor literatura al respecto donde se rescata el uso de calefacción en el subsuelo como lo plantea \parencite{Kurpaska2000}. El último factor importante que abarca este trabajo es el de la iluminación, el cual solo afecta cuando el invernadero no tiene acceso a luz solar o esta es muy escasa; para este caso como lo menciona \parencite{VanIersel2017} los requerimientos para la fotosíntesis de las plantas puedes ser asistidos o remplazados completamente con iluminación LED (diodo emisor de luz).
+
+En este documento se presenta una propuesta de invernadero tal que este pueda ser instalado sobre cualquier superficie, este invernadero utilizará las tecnologías de SDI para la irrigación, calefacción en sub-suelo e iluminación LED asistida, todos controlados por un microcontrolador ESP32 el cual realizará el actuamiento de cada sistema, además de registrar dichos procesos a una base de datos MySQL a través de mensajes en formato JSON en el protocolo MQTT para poder así agregar otras aplicaciones gráficas para una gestión cómoda del invernadero. Además del sistema de gestión se desarrolla un modelo de optimización con Gurobi que minimice el costo operacional para la calefacción e irrigación en el uso de agua y electricidad.
+
+El resto del documento se organiza de la siguiente manera.
+
+aun nose
+
+
+
+
+
+
+
+
+\section{REVISIÓN DE LA LITERATURA}
+
+%Se coloca la revisión de la literatura. Si se quiere citar al autor dentro del documento, ocupar citet, y si se quiere citar luego de una idea, ocupar citetp.
+
+%Posteriormente, se habla de lo que no hay en la literatura, junto con la propuesta del modelo del trabajo.
+
+
+%hacer mas competitivo el ionvernadero
+%It is obvious that future food infrastructure will have to be more productive than today’s food infrastructure, but it will also have to be more sustainable. Sustainable urban food production needs to address all the dimensions of sustainability at the same time. It needs to address envi- ronmental challenges, to tackle and improve social issues, and provide economic welfare.\textcite{Specht2014}
+
+Es claro que a futuro la infraestructura para la agronomía tendrá que ser más productiva y sustentable, teniendo foco en mejorar los problemas medio-ambientales y sociales, además de proveer un beneficio económico al mismo tiempo \parencite{Specht2014}.
+
+
+
+
+
+
+%mediante automatizacion (tecnologias)
+
+Dentro de las herramientas disponibles para lograr invernaderos más eficientes se destaca el uso de SDI en comparación con el sistema tradicional de Sprinklers tal y como lo demuestra el autor \parencite{Of2000}, esta tecnología a pesar de no ser nueva, no ha tenido tanto impacto como los Sprinklers principalmente por la escasa información accesible para los granjeros y complicaciones que esta puede presentar \parencite{Lamm2012}, a pesar de que la gran mayoría son solucionables como lo demuestra \parencite{Yu2010}. 
+Otra herramienta que cabe destacar para mejorar la eficiencia de un invernadero es el uso de calefacción en el subsuelo tal y como lo propone \parencite{Cuce2016} dentro de sus propuestas para un invernadero sustentable, también mediante un modelamiento para minimizar la temperatura de los tubos de calefacción \parencite{Kurpaska2000}, determina que en gran cantidad de casos es sustancialmente más eficiente el uso de calefactores en el sub-suelo para la calefacción. 
+Otro factor importante es el uso de iluminación asistida mediante la cual permite sustituir o apoyar a la luz solar que llega a las plantas, de las tecnologías disponibles HPS (lámparas de sodio a alta presión) y LED, esta última permite la emisión de frecuencias específicas necesarias para fotosíntesis además de que su emisión puede ser modulada evitando la sobre exposición \parencite{VanIersel2017}.
+
+Mientras que los autores anteriores hablan de de como utilizar dichas tecnologías, otros hablan de como optimizar el uso y/o implementación de estas, donde muchos toman como base a \cite{Gijzen1998} por su antigüedad y amplitud que abarcan sus siete sub-modelos en el funcionamiento general de un invernadero, aunque al igual que muchos otros autores más contemporáneos, dejan de lado la optimización para la irrigación con alguna pocas excepciones para el uso de SDI como lo es \parencite{Kandelous2010}, quien modela dicha tecnología para obtener el patrón de regadío que esta genera y con ello poder minimizar el uso de agua. Para el caso de la calefacción existe un gran número de moldeamientos y propuestas de como minimizar su costo, de ellas se pueden dividir según el uso de heurística o no, quienes no hacen uso de esta herramienta suele deberse a que su modelo implica más variables que solo la calefacción como lo es \parencite{Kiyan2013}, quien busca un modelo y control automatizado para ir alternado entre uso de energía solar o combustible fósil para calefaccionar o el caso de \parencite{Bozchalui2015}, quien implemento un modelo con la dinámica de ``Smart-Grids'' para periodos con costos variables en el tiempo, en cambio quienes si utilizan heurística poseen bastantes puntos en común respecto a su modelamiento, como lo es el método de utilizar un calefactor para el aire atrapado o el uso de técnicas similares como son el PSO (optimización de enjambre de poarticulas) \parencite{Hasni2011,Chen2018} o la versión más especializada GWO (optimización del lobo gris) \parencite{Singhal2017} o, por CDF (dinámica de fluidos computacional). Todas estas técnicas se utilizan para el mismo objetivo el cual es modelar la dinámica del aire calefaccionado y por ende el movimiento de la temperatura, el cual suele ser de alta complejidad matemática \parencite{Singhal2017} y por ello los autores anteriormente mencionados utilizan la heurística.
+
+
+El invernadero propuesto integrará el uso de SDI, Calefacción en el subsuelo e iluminación asistida, además de un sistema de gestión para la interacción remota.
+El modelo propuesto mediante un método numérico de minimización  para el costo operacional buscara realizar un control predictivo sobre los sistemas del invernadero propuesto.
+
+
+
+
+\section{METODOLOGÍA}
+\subfile{contenidos/metodologia2}                    %metodologia en otro archiv
+%\subsection{Modelo de optimización}
+
+
+
+%\subsection{Descripción del problema}
+
+%Se describe el modelo de optimización, junto con todas los conjuntos, parámetros y decisiones. Todo esto se hace con palabras.
+
+%\subsection{Supuestos}
+
+%Se enumeran los supuestos que se realizaron a la hora de confeccionar el modelo.
+
+%\begin{enumerate}[label=\roman*.]
+%	\item Supuesto 1
+%	\item Supuesto 2
+%\end{enumerate}
+
+%\subsection{Formulación del Modelo}
+
+%\subsection{Conjuntos}
+%Se consideraron los siguientes conjuntos:
+%\begin{itemize}
+%	\item $N$: Conjunto de ...
+%\end{itemize}
+
+%\subsection{Parámetros}
+%Los parámetros considerados son los siguientes:
+
+%\begin{itemize}
+%	\item $a$: ...
+%\end{itemize}
+
+%\subsection{Variables}
+%Las variables de decisión elaboradas se presentan a continuación.
+
+%\begin{itemize}
+%	\item $x_i$: Descripción variable. 
+%\end{itemize}
+
+%\subsection{Modelo Matemático}
+
+%Se presenta el modelo matemático. El alumno puede presentarlo de manera agrupada o presentando el modelo y luego dando la descripción de cada una de las variables.
+
+\section{Caso de Estudio}
+
+\subsection{Área de estudio}
+
+Se menciona el caso de estudio, ya sea una región de estudio y/o establecimiento, etc.
+
+\subsection{Recopilación de datos}
+
+Se declaran todos los datos de los parámetros utilizados. Se pueden ocupar las subsubsecciones.
+
+\subsubsection{Software}
+
+El modelo de optimización fue ejecutado en AMPL Gurobi. Además, las instancias fueron desarrolladas por un computador con procesador i7, con 16 GB de memoria RAM.
+
+\section{RESULTADOS}
+
+Se exponen los resultados, según los escenarios conversados con el profesor guía.
+
+\section{CONCLUSIÓN Y TRABAJOS FUTUROS}
+
+Se concluye el trabajo. Primero se resume lo que se hizo y se discuten los resultados obtenidos. Posteriormente se proponen los trabajos futuros.
+\newpage
+\section{Bibliografía}
+
+\printbibliography
+
+
+\end{document}
