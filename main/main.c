@@ -18,6 +18,7 @@
 #include "actuadores.h"
 #include "sensores.h"
 
+#include "handlers.h"
 
 
 
@@ -63,8 +64,56 @@ void app_main() {
 		vTaskDelay(2000 / portTICK_PERIOD_MS);
 	}*/
 	
-   sist_init();
+   //sist_init();
+   /*int i=0;
+	iniciar_handlers(&i);
+	while(1){
+		ESP_LOGI("main","esperando...");
+		vTaskDelay(500 / portTICK_PERIOD_MS);
+		ESP_LOGI("main","%d",i);
+	}*/
+	unsigned int boton=0;
+	int pos=0;
+	iniciar_handlers(&boton);
+	gpio_pad_select_gpio(13);
+	gpio_set_direction(13, GPIO_MODE_OUTPUT);
+	gpio_pad_select_gpio(12);
+	gpio_set_direction(12, GPIO_MODE_OUTPUT);
+	gpio_pad_select_gpio(26);
+	gpio_set_direction(26, GPIO_MODE_OUTPUT);
+	gpio_pad_select_gpio(25);
+	gpio_set_direction(25, GPIO_MODE_OUTPUT);
 
+	while(1){
+		pos+=get_value();
+		if(pos<0){
+			pos=3;
+		}
+		pos=pos%4;
+		switch(pos){
+			case 0 :
+				gpio_set_level(13,boton);
+				break;
+			case 1 :
+				gpio_set_level(12,boton);
+				break;
+			case 2 :
+				gpio_set_level(26,boton);
+				break;
+			case 3 :
+				gpio_set_level(25,boton);
+				break;
+			default :
+				ESP_LOGE("case","pos no valida: %d",pos);
+			break;			
+		}
+		
+		
+		
+		vTaskDelay(50 / portTICK_PERIOD_MS);
+		
+	}
+	
 
 
 }
