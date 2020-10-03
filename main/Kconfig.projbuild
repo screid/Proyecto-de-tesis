@@ -41,10 +41,10 @@ menu "INVERNADERO CONFIG"
 			
 	config led_clk
 		int "gpio pin: clock"
-		default 19
+		default 17
 	config led_dat
 		int "gpio pin: data"
-		default 18
+		default 16
     endmenu
 
 
@@ -57,26 +57,26 @@ menu "INVERNADERO CONFIG"
     menu "DHT11"
         config pin_externo
             int "pin dth11 al exterior"
-            default 16
+            default 18
             help
                 el numero del gpio
 
 
         config pin1_interno
             int "pin dht11 al aire interno UNO"
-            default 17
+            default 5
 
 		
 		
 		config pin2_interno
             int "pin dht11 al aire interno DOS"
-            default 18
+            default 32
 
 		
 		
 		config pin3_interno
             int "pin dht11 al aire interno TRES"
-            default 5
+            default 33
 
 
 
@@ -90,11 +90,11 @@ menu "INVERNADERO CONFIG"
     menu "Temperatura"
         config pin_bomba_circulacion
         int "pin para enceder la bomba de circulacion"
-        default 13
+        default 25
 
         config pin_calefactor
         int "pin para enceder el calefactor"
-        default 12
+        default 26
 
 
     endmenu
@@ -121,7 +121,7 @@ menu "INVERNADERO CONFIG"
 
         config pin_bomba_irrigacion
             int "pin para encender la bomba de irrigacion"
-            default 26
+            default 12
 
         config hum_periodo
             int "tiempo en segundos entre controles"

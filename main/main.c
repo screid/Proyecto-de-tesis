@@ -21,7 +21,7 @@
 #include "handlers.h"
 
 
-
+#include "oled_i2c.h"
 
 
 
@@ -72,6 +72,7 @@ void app_main() {
 		vTaskDelay(500 / portTICK_PERIOD_MS);
 		ESP_LOGI("main","%d",i);
 	}*/
+	/*
 	unsigned int boton=0;
 	int pos=0;
 	iniciar_handlers(&boton);
@@ -112,10 +113,38 @@ void app_main() {
 		
 		vTaskDelay(50 / portTICK_PERIOD_MS);
 		
+	}*/
+	/*
+	char r,g,b;
+	tira_led leds = leds_init(CONFIG_led_clk,CONFIG_led_dat);
+	while(1){
+		esp_fill_random(&r,sizeof(r));
+		esp_fill_random(&g,sizeof(g));
+		esp_fill_random(&b,sizeof(b));
+		set_color(r,g,b,&leds);
+		ESP_LOGI("colores","r:%c g:%c b:%c",r,g,b);
+		vTaskDelay(50 / portTICK_PERIOD_MS);
+		set_color(0,0,0,&leds);
+		vTaskDelay(50 / portTICK_PERIOD_MS);
 	}
+	*/
+	const i2c_port_t i2c=I2C_NUM_0;	
+	i2c_master_init(i2c,400000);
+	oled ole={i2c,oled1,{""}};
+	oled_init(&ole);
+	oled_res(&ole);
 	
+	
+	for (char c=32;c<126;c++){
+		enviar_caracter_oled(&ole, c);
+		ESP_LOGI("car","	%c",c);
+		vTaskDelay(1000/ portTICK_PERIOD_MS);
+	}
 
-
+	
+	vTaskDelay(100000 / portTICK_PERIOD_MS);
+	
+	
 }
 
 
