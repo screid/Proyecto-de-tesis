@@ -1,0 +1,13 @@
+
+*.bak
+*.toc
+*.xml
+*.lot
+*.log
+*.lof
+*.idx
+*.blg
+*.bcf
+*.bbl
+*.aux
+*.gz
