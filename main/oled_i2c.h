@@ -41,21 +41,42 @@ typedef enum{
 typedef struct{
 	i2c_port_t i2c;
 	uint8_t direccion;
-	
-	char data[8][16];
 }oled;
 
 
 
-/**	\brief enviar un comando al oled atravez del i2c
+/**	\brief enviar un comando simple (un byte) al oled atravez del i2c
  *	\param direccion del oled
  *	\param i2c ya configurado
  */
 void send_comand(oled* ole,comandos comando);
+
+/**	\brief iniciar la pantalla oled con modo de scroll horizontal invertido
+ *	\param puntero de la estructura del oled a inicializar
+ */
 void oled_init(oled* ole);
+
+/**	\brief enviar una columna de 8 bits en la direccion del cursor actual
+ *	\param puntero de la estructura del oled
+ *	\param byte de informacion a pasar a la columna del oled, msb ariba, lsb abajo
+ */
 void enviar_col(oled* ole,uint8_t data);
+
+/**	\brief reiniciar la pantalla del oled, data y poscicion
+ *	\param puntero de la estructura del oled
+ */
 void oled_res(oled* ole);
+
+/**	\brief funcion de ayuda para tranformar carracteres ascii a bitmat definido en oled_pixels/(bitmat.c y bitmat.xlsx)
+ *	\param caracter ascii a transformar, solo caracteres con representacion grafica
+ *	\return puntero al reglo con el bitmat del carracter (8 x char)
+ */
 const char* a_bitmap(char caracter);
+
+/** \brief funcion para escribir un caracter en la siguiente poscicion del cursor
+ *	\param puntero de la estructura del oled
+ *	\param caracter a enviar
+ */
 void enviar_caracter_oled(oled* ole, char character);
 
 
