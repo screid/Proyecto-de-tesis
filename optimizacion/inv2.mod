@@ -1,5 +1,6 @@
 									
-#parametros									
+#parametros	
+#holi :)
 									
 param	periodo		;						
 param	maxt		;						
